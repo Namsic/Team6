@@ -39,6 +39,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".tab_movement.RecordMovement"></activity>
     </application>
 
 </manifest>
