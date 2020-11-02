@@ -37,7 +37,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private String fullAddress;
     private GpsTracker gpsTracker;
     private Button btnRecordWindow;
-
+  
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -117,42 +117,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
-
-    //gps를 이용한 현재위치의 latitude를 반환
-//    public double getLatitude() {
-//        LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-//
-//        double latitude = 0;
-//
-//        try{
-//            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//            if (location != null) {
-//                latitude = location.getLatitude();
-//            }
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return latitude;
-//    }
-
-    // gps를 이용한 현재위치의 longitude를 반환
-//    public double getLongitude() {
-//        LocationManager manager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
-//
-//        double longitude = 0;
-//
-//        try{
-//            Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//            if (location != null) {
-//                longitude = location.getLongitude();
-//            }
-//        } catch (SecurityException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return longitude;
-//    }
+    
 
     // 현재위치를 경도와 위도를 이용하여 그 위치의 주소를 반환
     private String getCityName(LatLng myCoordinates) {
