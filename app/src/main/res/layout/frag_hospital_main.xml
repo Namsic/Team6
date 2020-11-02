@@ -4,11 +4,65 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ddaadd">
+    android:background="#FFCCFF">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text = "Hello world!"/>
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text = "시도 및 시군구, 기관명, 전화번호를 사용해 검색할 수 있습니다."/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="#0000FF"
+        android:text = "검색어 예시 : '서울' / '중구' / '보건소' / '051'(전화번호 일부)"/>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:weightSum="2">
+
+        <RadioButton
+            android:id="@+id/rbtn_searchType0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="국민안심병원" />
+
+        <RadioButton
+            android:id="@+id/rbtn_searchType1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="선별 진료소" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/editSearchValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="검색" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_clinic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFDD"/>
 </LinearLayout>
