@@ -1,16 +1,20 @@
-package com.example.team6project.tab_hospital;
+package com.example.team6project.tab_clinic;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.team6project.MainActivity;
 import com.example.team6project.R;
+import com.example.team6project.tab_movement.MapFragment;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ClinicListViewAdapter extends BaseAdapter {
@@ -46,13 +50,21 @@ public class ClinicListViewAdapter extends BaseAdapter {
         TextView tvName = (TextView) convertView.findViewById(R.id.tv_clinic_name);
         Button btnMap = (Button) convertView.findViewById(R.id.btn_mapURL);
 
-        Clinic listViewItem = arr.get(position);
+        final Clinic listViewItem = arr.get(position);
         tvName.setText(listViewItem.name);
 
         btnMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "미구현", Toast.LENGTH_SHORT).show();
+                ((MainActivity)context).changeView(2);
+                Address clinicAddress = null;
+                String searchString = listViewItem.position + " " + listViewItem.name;
+                try {
+                    clinicAddress = new Geocoder(context).getFromLocationName(searchString, 1).get(0);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ((MapFragment)((MainActivity)context).getTabFragment(2)).addMarker(clinicAddress, listViewItem.name);
             }
         });
         return convertView;

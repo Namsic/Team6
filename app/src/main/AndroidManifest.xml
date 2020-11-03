@@ -31,6 +31,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBPcMfAnUYcBkHZeptu2_HpccyBf7Mbpug"/>
+            <!--
+                gt_api_key "AIzaSyBPcMfAnUYcBkHZeptu2_HpccyBf7Mbpug"
+                nj_api_key "AIzaSyCxMro9yELFuvIwKI8Evw9wWjBE_RML5LE"
+            -->
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -39,7 +43,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tab_movement.RecordMovement"></activity>
+        <activity android:name=".tab_movement.RecordMovement"/>
+        <activity android:name=".tab_clinic.ClinicActivity"/>
     </application>
 
 </manifest>

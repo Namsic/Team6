@@ -5,16 +5,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.team6project.tab_hospital.HospitalFragment;
+import com.example.team6project.tab_clinic.ClinicFragment;
 import com.example.team6project.tab_movement.MapFragment;
 import com.example.team6project.tab_news.NewsFragment;
 
 public class MainPagerAdapter extends FragmentStateAdapter {
     int numOfTabs;
+    NewsFragment newsFragment;
+    ClinicFragment clinicFragment;
+    MapFragment mapFragment;
 
-    public MainPagerAdapter(FragmentActivity fa, int num){
+    public MainPagerAdapter(FragmentActivity fa, NewsFragment nf, ClinicFragment hf, MapFragment mf){
         super(fa);
-        numOfTabs = num;
+        newsFragment = nf;
+        clinicFragment = hf;
+        mapFragment = mf;
+        numOfTabs = 3;
     }
 
     @NonNull
@@ -22,11 +28,11 @@ public class MainPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new NewsFragment();
+                return newsFragment;
             case 1:
-                return new HospitalFragment();
+                return clinicFragment;
             case 2:
-                return new MapFragment();
+                return mapFragment;
             default:
                 return new Fragment();
         }

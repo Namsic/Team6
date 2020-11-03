@@ -159,4 +159,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    // Address, 장소이름을 받아 marker 추가 및 이동
+    public void addMarker(Address address, String title){
+        LatLng point = new LatLng(address.getLatitude(), address.getLongitude());
+        MarkerOptions mOptions = new MarkerOptions();
+        mOptions.position(point);
+        mOptions.title(title);
+        String[] subAddress = address.getAddressLine(0).split(", ");
+        String snippetText = subAddress[0] + " " + subAddress[1] + "\n" + subAddress[2] + " " + subAddress[3];
+                mOptions.snippet(snippetText);
+        googleMap.addMarker(mOptions);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
+    }
 }
