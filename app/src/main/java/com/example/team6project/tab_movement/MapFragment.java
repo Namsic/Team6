@@ -25,6 +25,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private String fullAddress;
     private GpsTracker gpsTracker;
     private Button btnRecordWindow;
+
+    private Marker currentMarker = null;
   
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -159,16 +162,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
-    // Address, 장소이름을 받아 marker 추가 및 이동
-    public void addMarker(Address address, String title){
+    // Address 객체, 장소이름을 받아 marker 표시 및 이동
+    // Editor - 김남재
+    public void pickMarker(Address address, String title){
+        if(currentMarker != null)
+            currentMarker.remove();
+
         LatLng point = new LatLng(address.getLatitude(), address.getLongitude());
         MarkerOptions mOptions = new MarkerOptions();
         mOptions.position(point);
         mOptions.title(title);
-        String[] subAddress = address.getAddressLine(0).split(", ");
-        String snippetText = subAddress[0] + " " + subAddress[1] + "\n" + subAddress[2] + " " + subAddress[3];
-                mOptions.snippet(snippetText);
-        googleMap.addMarker(mOptions);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 15));
+        mOptions.snippet(address.getAddressLine(0));
+        currentMarker = googleMap.addMarker(mOptions);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 16));
     }
 }

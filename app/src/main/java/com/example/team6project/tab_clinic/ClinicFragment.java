@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+// 병원 & 진료소 정보를 검색할 수 있는 탭
+// Editor - 김남재
 public class ClinicFragment extends Fragment {
     ArrayList<Clinic> searchOutput = new ArrayList<Clinic>();
     ClinicListViewAdapter clinicListViewAdapter = new ClinicListViewAdapter(searchOutput);
@@ -35,6 +37,7 @@ public class ClinicFragment extends Fragment {
     Button searchButton;
     ListView clinicListView;
 
+    // EditText, ListView 등을 활용한 검색화면 구현\
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.frag_hospital_main, container, false);
@@ -48,6 +51,7 @@ public class ClinicFragment extends Fragment {
         clinicListView = (ListView) rootView.findViewById(R.id.lv_clinic);
         clinicListView.setAdapter(clinicListViewAdapter);
 
+        // 검색 버튼 클릭 시 정보를 받아옴
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +62,7 @@ public class ClinicFragment extends Fragment {
             }
         });
 
+        // 각 ListView item 클릭 시 해당 Clinic 정보를 Intent 활용해서 새 Activity 띄움
         clinicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -75,11 +80,13 @@ public class ClinicFragment extends Fragment {
         return rootView;
     }
 
+    // 입력받은 값 검색한 결과 크롤링
     private class SearchClinic extends AsyncTask<Void, Void, Void>{
         int searchType;
         final String baseURL = "https://www.mohw.go.kr";
         String target_URL;
 
+        // 찾으려는 병원 & 진료소 종류, 찾으려는 값 입력받아 URL 설정
         SearchClinic(int searchType, String searchValue){
             this.searchType = searchType;
             switch (searchType){
@@ -94,6 +101,7 @@ public class ClinicFragment extends Fragment {
                 this.target_URL += "?SEARCHVALUE=" + searchValue;
         }
 
+        // 설정한 URL html 받아와 필요한 정보 SearchOutput(ListView 연결)에 저장
         @Override
         protected Void doInBackground(Void... voids) {
             Document doc = null;
@@ -130,6 +138,7 @@ public class ClinicFragment extends Fragment {
             return null;
         }
 
+        // 작업 종료 후 변경내용 적용(ListView 갱신)
         @Override
         protected void onPostExecute(Void result){
             clinicListViewAdapter.notifyDataSetChanged();

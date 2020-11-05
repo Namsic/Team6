@@ -12,6 +12,8 @@ import com.example.team6project.tab_news.NewsFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+// ViewPager2, TabLayout 활용. 3개의 Fragment 표시
+// Editor - 김남재
 public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
     private MainPagerAdapter adapter;
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private ClinicFragment clinicFragment;
     private MapFragment mapFragment;
 
+    // 각 탭에 해당하는 Fragment 생성 & ViewPager 및 TabLayout 연결
+    // Editor - 김남재
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +47,14 @@ public class MainActivity extends AppCompatActivity {
                 }).attach();
     }
 
+    // 입력받은 위치에 해당하는 화면으로 전환
+    // Editor - 김남재
     public void changeView(int position) {
         viewPager.setCurrentItem(position, true);
     }
+
+    // 입력받은 위치에 해당하는 Fragment 반환
+    // Editor - 김남재
     public Fragment getTabFragment(int position){
         switch (position){
             case 0:

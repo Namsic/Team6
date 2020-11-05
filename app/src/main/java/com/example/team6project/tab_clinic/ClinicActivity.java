@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import com.example.team6project.R;
 
+// Intent 활용하여 넘겨받은 각 Clinic 정보 표시
+// Editor - 김남재
 public class ClinicActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

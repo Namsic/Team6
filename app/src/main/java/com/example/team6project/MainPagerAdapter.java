@@ -9,12 +9,17 @@ import com.example.team6project.tab_clinic.ClinicFragment;
 import com.example.team6project.tab_movement.MapFragment;
 import com.example.team6project.tab_news.NewsFragment;
 
+
+// ViewPager2에서 사용할 Adapter
+// Editor - 김남재
 public class MainPagerAdapter extends FragmentStateAdapter {
     int numOfTabs;
     NewsFragment newsFragment;
     ClinicFragment clinicFragment;
     MapFragment mapFragment;
 
+    // 각 탭에서 사용할 Fragment 받아와서 Adapter 생성
+    // Editor - 김남재
     public MainPagerAdapter(FragmentActivity fa, NewsFragment nf, ClinicFragment hf, MapFragment mf){
         super(fa);
         newsFragment = nf;
