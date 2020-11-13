@@ -5,7 +5,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
-
 import com.example.team6project.tab_clinic.ClinicFragment;
 import com.example.team6project.tab_movement.MapFragment;
 import com.example.team6project.tab_news.NewsFragment;
